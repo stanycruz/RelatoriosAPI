@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using RelatoriosAPI.Domain.Entities;
 
 namespace RelatoriosAPI.Domain.Interfaces
 {
     public interface IProductRepository
     {
-        
+        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<Product> GetProductByIdAsync(int productId);
     }
 }
