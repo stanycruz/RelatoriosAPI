@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 using RelatoriosAPI.Application.Services;
 using RelatoriosAPI.Domain.Entities;
 using RelatoriosAPI.Domain.Services;
@@ -39,6 +40,7 @@ namespace RelatoriosAPI.Presentation.Controllers
         [HttpGet("excel")]
         public async Task<IActionResult> GetExcelReport()
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var products = (await _productService.GetAllProductsAsync()).ToList();
             var excel = _excelReportService.GenerateExcelReport(products);
             return File(
