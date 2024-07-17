@@ -9,7 +9,7 @@ API para gerar relatórios em três formatos: PDF, Excel (*.xlsx) e CSV utilizan
 - AutoMapper
 - FluentValidation
 - DinkToPdf
-- ClosedXML
+- EPPlus
 - CsvHelper
 - SQL Server
 
@@ -24,6 +24,23 @@ API para gerar relatórios em três formatos: PDF, Excel (*.xlsx) e CSV utilizan
 2. Configure a string de conexão no `appsettings.json`.
 3. Execute os comandos abaixo para restaurar as dependências e rodar o projeto:
 
+    ```sh
+    dotnet restore
+    dotnet run
+    ```
+
+## Instalação do wkhtmltopdf
+
+### Linux
+
+Para instalar o `wkhtmltopdf` no Linux, siga as instruções abaixo:
+
 ```sh
-dotnet restore
-dotnet run
+sudo apt update
+sudo apt install -y software-properties-common
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu bionic-security main"
+sudo apt update
+
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+sudo apt install -y ./wkhtmltox_0.12.6-1.bionic_amd64.deb
