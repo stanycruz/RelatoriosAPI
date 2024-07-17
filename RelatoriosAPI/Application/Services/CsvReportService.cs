@@ -6,7 +6,7 @@ namespace RelatoriosAPI.Application.Services
 {
     public class CsvReportService
     {
-        public byte[] GenerateCsvReport(List<Product> products)
+        public byte[] GenerateCsvReport(IEnumerable<Product> products)
         {
             using (var memoryStream = new MemoryStream())
             using (var writer = new StreamWriter(memoryStream))

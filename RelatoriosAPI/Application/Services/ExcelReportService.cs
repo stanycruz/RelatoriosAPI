@@ -5,7 +5,7 @@ namespace RelatoriosAPI.Application.Services
 {
     public class ExcelReportService
     {
-        public byte[] GenerateExcelReport(List<Product> products)
+        public byte[] GenerateExcelReport(IEnumerable<Product> products)
         {
             using (var package = new ExcelPackage())
             {
@@ -17,11 +17,13 @@ namespace RelatoriosAPI.Application.Services
                 // TODO: Adicione mais colunas conforme necessário
 
                 // Dados
-                for (int i = 0; i < products.Count; i++)
+                int row = 2;
+                foreach (var product in products)
                 {
-                    worksheet.Cells[i + 2, 1].Value = products[i].ProductID;
-                    worksheet.Cells[i + 2, 2].Value = products[i].Name;
+                    worksheet.Cells[row, 1].Value = product.ProductID;
+                    worksheet.Cells[row, 2].Value = product.Name;
                     // TODO: Adicione mais colunas conforme necessário
+                    row++;
                 }
 
                 worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
