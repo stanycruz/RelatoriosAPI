@@ -7,6 +7,8 @@ namespace RelatoriosAPI.Application.Services
     {
         public byte[] GenerateExcelReport(IEnumerable<Product> products)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Products");
