@@ -1,10 +1,11 @@
 using System.Globalization;
 using CsvHelper;
 using RelatoriosAPI.Domain.Entities;
+using RelatoriosAPI.Domain.Services;
 
 namespace RelatoriosAPI.Application.Services
 {
-    public class CsvReportService
+    public class CsvReportService : ICsvReportService
     {
         public byte[] GenerateCsvReport(IEnumerable<Product> products)
         {

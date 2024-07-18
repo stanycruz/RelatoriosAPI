@@ -1,9 +1,10 @@
 using DinkToPdf;
 using DinkToPdf.Contracts;
+using RelatoriosAPI.Domain.Services;
 
 namespace RelatoriosAPI.Application.Services
 {
-    public class PdfReportService
+    public class PdfReportService : IPdfReportService
     {
         private readonly IConverter _converter;
 

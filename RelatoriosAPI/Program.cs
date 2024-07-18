@@ -21,9 +21,9 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
 // Registrar serviços para geração de relatórios
-builder.Services.AddScoped<PdfReportService>();
-builder.Services.AddScoped<ExcelReportService>();
-builder.Services.AddScoped<CsvReportService>();
+builder.Services.AddScoped<IPdfReportService, PdfReportService>();
+builder.Services.AddScoped<IExcelReportService, ExcelReportService>();
+builder.Services.AddScoped<ICsvReportService, CsvReportService>();
 
 // Registrar o serviço de conversão de PDF
 builder.Services.AddSingleton<IConverter, SynchronizedConverter>(

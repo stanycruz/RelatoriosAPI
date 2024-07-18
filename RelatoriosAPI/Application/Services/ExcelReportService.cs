@@ -1,9 +1,10 @@
 using OfficeOpenXml;
 using RelatoriosAPI.Domain.Entities;
+using RelatoriosAPI.Domain.Services;
 
 namespace RelatoriosAPI.Application.Services
 {
-    public class ExcelReportService
+    public class ExcelReportService : IExcelReportService
     {
         public byte[] GenerateExcelReport(IEnumerable<Product> products)
         {

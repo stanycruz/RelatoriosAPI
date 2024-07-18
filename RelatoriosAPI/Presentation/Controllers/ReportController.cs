@@ -11,15 +11,15 @@ namespace RelatoriosAPI.Presentation.Controllers
     public class ReportController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly PdfReportService _pdfReportService;
-        private readonly ExcelReportService _excelReportService;
-        private readonly CsvReportService _csvReportService;
+        private readonly IPdfReportService _pdfReportService;
+        private readonly IExcelReportService _excelReportService;
+        private readonly ICsvReportService _csvReportService;
 
         public ReportController(
             IProductService productService,
-            PdfReportService pdfReportService,
-            ExcelReportService excelReportService,
-            CsvReportService csvReportService
+            IPdfReportService pdfReportService,
+            IExcelReportService excelReportService,
+            ICsvReportService csvReportService
         )
         {
             _productService = productService;
