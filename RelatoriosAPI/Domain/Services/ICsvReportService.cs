@@ -4,6 +4,6 @@ namespace RelatoriosAPI.Domain.Services
 {
     public interface ICsvReportService
     {
-        byte[] GenerateCsvReport(IEnumerable<Product> products);
+        Task<byte[]> GenerateCsvReportAsync(IEnumerable<Product> products);
     }
 }

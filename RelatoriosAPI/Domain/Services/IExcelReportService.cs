@@ -4,6 +4,6 @@ namespace RelatoriosAPI.Domain.Services
 {
     public interface IExcelReportService
     {
-        byte[] GenerateExcelReport(IEnumerable<Product> products);
+        Task<byte[]> GenerateExcelReportAsync(IEnumerable<Product> products);
     }
 }

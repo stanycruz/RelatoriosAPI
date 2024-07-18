@@ -4,6 +4,6 @@ namespace RelatoriosAPI.Domain.Services
 {
     public interface IPdfReportService
     {
-        byte[] GeneratePdfReport(string htmlContent);
+        Task<byte[]> GeneratePdfReportAsync(string htmlContent);
     }
 }
