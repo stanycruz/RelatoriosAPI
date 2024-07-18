@@ -1,9 +1,10 @@
 using DinkToPdf;
 using DinkToPdf.Contracts;
+using RelatoriosAPI.Domain.Services;
 
 namespace RelatoriosAPI.Application.Services
 {
-    public class PdfReportService
+    public class PdfReportService : IPdfReportService
     {
         private readonly IConverter _converter;
 
@@ -12,7 +13,7 @@ namespace RelatoriosAPI.Application.Services
             _converter = converter;
         }
 
-        public byte[] GeneratePdfReport(string htmlContent)
+        public async Task<byte[]> GeneratePdfReportAsync(string htmlContent)
         {
             var doc = new HtmlToPdfDocument
             {
@@ -33,7 +34,7 @@ namespace RelatoriosAPI.Application.Services
                 }
             };
 
-            return _converter.Convert(doc);
+            return await Task.FromResult(_converter.Convert(doc));
         }
     }
 }

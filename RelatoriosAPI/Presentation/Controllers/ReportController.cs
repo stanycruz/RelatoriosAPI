@@ -11,15 +11,15 @@ namespace RelatoriosAPI.Presentation.Controllers
     public class ReportController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly PdfReportService _pdfReportService;
-        private readonly ExcelReportService _excelReportService;
-        private readonly CsvReportService _csvReportService;
+        private readonly IPdfReportService _pdfReportService;
+        private readonly IExcelReportService _excelReportService;
+        private readonly ICsvReportService _csvReportService;
 
         public ReportController(
             IProductService productService,
-            PdfReportService pdfReportService,
-            ExcelReportService excelReportService,
-            CsvReportService csvReportService
+            IPdfReportService pdfReportService,
+            IExcelReportService excelReportService,
+            ICsvReportService csvReportService
         )
         {
             _productService = productService;
@@ -33,7 +33,7 @@ namespace RelatoriosAPI.Presentation.Controllers
         {
             var products = await _productService.GetAllProductsAsync();
             var htmlContent = GenerateHtmlContent(products);
-            var pdf = _pdfReportService.GeneratePdfReport(htmlContent);
+            var pdf = await _pdfReportService.GeneratePdfReportAsync(htmlContent);
             return File(pdf, "application/pdf", "report.pdf");
         }
 
@@ -42,7 +42,7 @@ namespace RelatoriosAPI.Presentation.Controllers
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var products = (await _productService.GetAllProductsAsync()).ToList();
-            var excel = _excelReportService.GenerateExcelReport(products);
+            var excel = await _excelReportService.GenerateExcelReportAsync(products);
             return File(
                 excel,
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -54,7 +54,7 @@ namespace RelatoriosAPI.Presentation.Controllers
         public async Task<IActionResult> GetCsvReport()
         {
             var products = (await _productService.GetAllProductsAsync()).ToList();
-            var csv = _csvReportService.GenerateCsvReport(products);
+            var csv = await _csvReportService.GenerateCsvReportAsync(products);
             return File(csv, "text/csv", "report.csv");
         }
 
