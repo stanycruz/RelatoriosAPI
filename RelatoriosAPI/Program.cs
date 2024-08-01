@@ -36,6 +36,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.Urls.Add("http://*:80");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

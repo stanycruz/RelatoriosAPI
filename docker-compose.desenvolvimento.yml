@@ -1,0 +1,10 @@
+services:
+  relatoriosapi:
+    container_name: relatoriosapi_desenvolvimento
+    build:
+      context: .
+      dockerfile: docker/desenvolvimento/Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
