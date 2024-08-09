@@ -36,7 +36,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.Urls.Add("http://*:80");
+// Configurar o uso da porta 8080 apenas no ambiente de publicação
+if (!app.Environment.IsDevelopment())
+{
+    app.Urls.Add("http://*:8080");
+}
 
 if (app.Environment.IsDevelopment())
 {
@@ -67,7 +71,7 @@ public class CustomAssemblyLoadContext : AssemblyLoadContext
         return LoadUnmanagedDllFromPath(filePath);
     }
 
-    protected override Assembly Load(AssemblyName assemblyName)
+    protected override Assembly? Load(AssemblyName assemblyName)
     {
         return null;
     }
