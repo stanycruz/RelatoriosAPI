@@ -19,9 +19,9 @@ namespace RelatoriosAPI.Infrastructure.Repositories
             return await _context.Products.ToListAsync();
         }
 
-        public async Task<Product> GetProductByIdAsync(int productId)
+        public async Task<Product> GetProductByIdAsync(int productKey)
         {
-            return await _context.Products.FindAsync(productId);
+            return await _context.Products.FindAsync(productKey);
         }
     }
 }

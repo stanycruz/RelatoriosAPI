@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
-using RelatoriosAPI.Application.Services;
 using RelatoriosAPI.Domain.Entities;
 using RelatoriosAPI.Domain.Services;
 
@@ -62,10 +61,11 @@ namespace RelatoriosAPI.Presentation.Controllers
         {
             // TODO: Gera o conteúdo HTML aqui
             var html =
-                "<html><body><h1>Products Report</h1><table><tr><th>ProductID</th><th>Name</th></tr>";
+                "<html><body><h1>Products Report</h1><table><tr><th>Product Key</th><th>English Product Name</th></tr>";
             foreach (var product in products)
             {
-                html += $"<tr><td>{product.ProductID}</td><td>{product.Name}</td></tr>";
+                html +=
+                    $"<tr><td>{product.ProductKey}</td><td>{product.EnglishProductName}</td></tr>";
             }
             html += "</table></body></html>";
             return html;

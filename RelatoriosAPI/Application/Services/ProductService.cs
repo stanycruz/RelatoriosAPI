@@ -18,9 +18,9 @@ namespace RelatoriosAPI.Application.Services
             return await _productRepository.GetAllProductsAsync();
         }
 
-        public async Task<Product> GetProductByIdAsync(int productId)
+        public async Task<Product> GetProductByIdAsync(int productKey)
         {
-            return await _productRepository.GetProductByIdAsync(productId);
+            return await _productRepository.GetProductByIdAsync(productKey);
         }
     }
 }
