@@ -9,14 +9,12 @@ namespace RelatoriosAPI.Application.Services
     {
         public async Task<byte[]> GenerateCsvReportAsync(IEnumerable<Product> products)
         {
-            using (var memoryStream = new MemoryStream())
-            using (var writer = new StreamWriter(memoryStream))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            {
-                await csv.WriteRecordsAsync(products);
-                await writer.FlushAsync();
-                return memoryStream.ToArray();
-            }
+            using var memoryStream = new MemoryStream();
+            using var writer = new StreamWriter(memoryStream);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            await csv.WriteRecordsAsync(products);
+            await writer.FlushAsync();
+            return memoryStream.ToArray();
         }
     }
 }

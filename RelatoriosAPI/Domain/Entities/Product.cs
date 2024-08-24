@@ -3,41 +3,45 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RelatoriosAPI.Domain.Entities
 {
-    [Table("Product", Schema = "Production")]
+    [Table("DimProduct", Schema = "dbo")]
     public class Product
     {
         [Key]
-        public int ProductID { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string? Name { get; set; }
-
-        [Required]
-        [StringLength(25)]
-        public string? ProductNumber { get; set; }
-
-        public bool MakeFlag { get; set; }
+        public int ProductKey { get; set; }
+        public string? ProductAlternateKey { get; set; }
+        public int? ProductSubcategoryKey { get; set; }
+        public string? WeightUnitMeasureCode { get; set; }
+        public string? SizeUnitMeasureCode { get; set; }
+        public string? EnglishProductName { get; set; }
+        public string? SpanishProductName { get; set; }
+        public string? FrenchProductName { get; set; }
+        public decimal? StandardCost { get; set; }
         public bool FinishedGoodsFlag { get; set; }
         public string? Color { get; set; }
         public short SafetyStockLevel { get; set; }
         public short ReorderPoint { get; set; }
-        public decimal StandardCost { get; set; }
-        public decimal ListPrice { get; set; }
+        public decimal? ListPrice { get; set; }
         public string? Size { get; set; }
-        public string? SizeUnitMeasureCode { get; set; }
-        public string? WeightUnitMeasureCode { get; set; }
-        public decimal? Weight { get; set; }
+        public string? SizeRange { get; set; }
+        public double? Weight { get; set; }
         public int DaysToManufacture { get; set; }
         public string? ProductLine { get; set; }
+        public decimal? DealerPrice { get; set; }
         public string? Class { get; set; }
         public string? Style { get; set; }
-        public int? ProductSubcategoryID { get; set; }
-        public int? ProductModelID { get; set; }
-        public DateTime SellStartDate { get; set; }
-        public DateTime? SellEndDate { get; set; }
-        public DateTime? DiscontinuedDate { get; set; }
-        public Guid rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public string? ModelName { get; set; }
+        public byte[]? LargePhoto { get; set; }
+        public string? EnglishDescription { get; set; }
+        public string? FrenchDescription { get; set; }
+        public string? ChineseDescription { get; set; }
+        public string? ArabicDescription { get; set; }
+        public string? HebrewDescription { get; set; }
+        public string? ThaiDescription { get; set; }
+        public string? GermanDescription { get; set; }
+        public string? JapaneseDescription { get; set; }
+        public string? TurkishDescription { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string? Status { get; set; }
     }
 }
